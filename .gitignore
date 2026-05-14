@@ -1,0 +1,18 @@
+# Environment
+.env
+.venv/
+
+# Data (user-provided)
+data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# ChromaDB persistent storage
+chroma_db/
+
+# IDE
+.vscode/
+.idea/

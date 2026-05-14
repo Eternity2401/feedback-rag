@@ -1,0 +1,571 @@
+{
+  "summary": {
+    "total_questions": 20,
+    "average_score": 0.38541666666666663,
+    "punted_count": 3,
+    "answer_rate": 0.85,
+    "total_time_seconds": 375.31066823005676,
+    "cost": "Free (Gemini Free Tier)"
+  },
+  "results": [
+    {
+      "id": "q1",
+      "question": "What do customers say about the packaging of the product?",
+      "answer": "Customers have varying opinions on the packaging depending on the product:\n\n*   One customer found a mix to be \"very poorly packaged,\" noting that \"3 bags out of 4 had come unsealed at the top\" and \"breaks open easily during shipping.\"\n*   Another customer praised the packaging of their creamer cups, stating they were \"tightly packed in a thick cardboard box\" and that \"none of my cups were broken, no waste and no sloppy drippy mess.\"\n*   One reviewer was \"not crazy about the packaging\" of their product because it came in a \"zip-lock pouch\" that \"ripped off and quit working after awhile,\" suggesting a \"resealable jar or hard plastic container\" instead.\n*   Regarding chips, one customer complained that their case \"came without any packing inside\" and \"no cushioning at all,\" which led to \"most of the chips\" being \"broken.\" Conversely, another customer stated they are \"always pleased with Amazon's packaging\" and that their \"chips are never crushed or broken.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "damaged",
+        "difficult to open",
+        "good seal"
+      ],
+      "must_mention": [
+        "packaging",
+        "box",
+        "seal"
+      ],
+      "metrics": {
+        "score": 0.5,
+        "must_mention_coverage": 1.0,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [
+          "packaging",
+          "box",
+          "seal"
+        ],
+        "mentioned_themes": []
+      },
+      "time_seconds": 24.61403512954712
+    },
+    {
+      "id": "q2",
+      "question": "Are there any mentions of the coffee being too bitter?",
+      "answer": "Yes, one reviewer described it as \"A very bitter tasting coffee even when enhanced with cream and/or honey,\" while another reviewer stated it has a \"Nice flavor, not too bitter.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "bitter",
+        "strong",
+        "burnt"
+      ],
+      "must_mention": [
+        "bitter",
+        "taste"
+      ],
+      "metrics": {
+        "score": 0.41666666666666663,
+        "must_mention_coverage": 0.5,
+        "themes_coverage": 0.3333333333333333,
+        "punted": false,
+        "mentioned_keywords": [
+          "bitter"
+        ],
+        "mentioned_themes": [
+          "bitter"
+        ]
+      },
+      "time_seconds": 11.340986251831055
+    },
+    {
+      "id": "q3",
+      "question": "How does this brand compare to Starbucks?",
+      "answer": "Price-wise, this brand is \"no worse price wise than starbucks or peets.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "better than",
+        "worse than",
+        "similar"
+      ],
+      "must_mention": [
+        "Starbucks"
+      ],
+      "metrics": {
+        "score": 0.5,
+        "must_mention_coverage": 1.0,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [
+          "Starbucks"
+        ],
+        "mentioned_themes": []
+      },
+      "time_seconds": 8.755308389663696
+    },
+    {
+      "id": "q4",
+      "question": "Do dogs like the taste of these treats?",
+      "answer": "Yes, dogs like the taste of these treats:\n* One reviewer's mixed Llasa, Tibetan Terrier \"adores them\" (Review 1).\n* A 9-week-old beagle \"loves the taste\" (Review 2).\n* A male Maltese dog \"loves them\" (Review 3).\n* A German Shorthair Pointer considers these treats \"her favorite\" (Review 4).",
+      "sources_count": 5,
+      "expected_themes": [
+        "love it",
+        "refuse to eat",
+        "obsessed"
+      ],
+      "must_mention": [
+        "dog",
+        "dogs",
+        "puppy",
+        "treat"
+      ],
+      "metrics": {
+        "score": 0.375,
+        "must_mention_coverage": 0.75,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [
+          "dog",
+          "dogs",
+          "treat"
+        ],
+        "mentioned_themes": []
+      },
+      "time_seconds": 15.487970113754272
+    },
+    {
+      "id": "q5",
+      "question": "Is this product gluten-free?",
+      "answer": "Yes, the product is gluten-free. Reviewers state that they buy the product \"because they are gluten free\" (Review 1), describe it as \"Gluten Free Oatmeal\" (Review 2), call them \"my favorite gluten-free dairy-free flavored chips\" (Review 3), note it is \"Great for Gluten-free lifestyle!!\" (Review 4), and mention \"It's also nice to have something gluten-free for friends\" (Review 5).",
+      "sources_count": 5,
+      "expected_themes": [
+        "gluten-free",
+        "celiac",
+        "wheat"
+      ],
+      "must_mention": [
+        "gluten"
+      ],
+      "metrics": {
+        "score": 0.6666666666666666,
+        "must_mention_coverage": 1.0,
+        "themes_coverage": 0.3333333333333333,
+        "punted": false,
+        "mentioned_keywords": [
+          "gluten"
+        ],
+        "mentioned_themes": [
+          "gluten-free"
+        ]
+      },
+      "time_seconds": 19.205004453659058
+    },
+    {
+      "id": "q6",
+      "question": "What are the common complaints about shipping?",
+      "answer": "Common complaints about shipping include:\n\n* **Cost:** One reviewer felt they \"got taken for a major ride on the shipping!\"\n* **Packaging and Spillage:** A customer noted the product was \"poorly packaged and breaks open easily during shipping,\" resulting in \"nearly a full bag of my order was spilled in the shipping box.\"\n* **Damage upon arrival:** One user reported that although shipping was quick, \"when it came in the roof was broken and the corner of the house was broken.\"\n* **Shipping methods:** A reviewer complained that \"Amazon sent it with a book which broke a bag and made a mess,\" calling it a \"foolish way to ship the product.\"\n* **General delivery:** One customer stated the experience was \"not what I was expecting in terms of the company's reputation for excellent home delivery products.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "delayed",
+        "melted",
+        "broken"
+      ],
+      "must_mention": [
+        "shipping",
+        "delivery",
+        "arrived"
+      ],
+      "metrics": {
+        "score": 0.5,
+        "must_mention_coverage": 0.6666666666666666,
+        "themes_coverage": 0.3333333333333333,
+        "punted": false,
+        "mentioned_keywords": [
+          "shipping",
+          "delivery"
+        ],
+        "mentioned_themes": [
+          "broken"
+        ]
+      },
+      "time_seconds": 19.72774386405945
+    },
+    {
+      "id": "q7",
+      "question": "Is the tea decaffeinated?",
+      "answer": "I don't know; one reviewer is unsure because the Amazon package displays \"CAFFENE FREE\" while the package they received displays \"NATURALLY HIGH IN POLYPHENOL CATECHINS,\" leading them to state, \"So I am not sure if this green tea is Caffene free or not.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "decaf",
+        "caffeine-free",
+        "sleep"
+      ],
+      "must_mention": [
+        "decaf",
+        "caffeine"
+      ],
+      "metrics": {
+        "score": 0.0,
+        "must_mention_coverage": 0.0,
+        "themes_coverage": 0.0,
+        "punted": true
+      },
+      "time_seconds": 15.859776258468628
+    },
+    {
+      "id": "q8",
+      "question": "How long does the product stay fresh?",
+      "answer": "Based on the reviews, the expiration dates vary: one customer stated the expiration date was \"21 months from the day I bought this product,\" while another mentioned the expiration date was \"for 8 months from now.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "stale",
+        "expiration date",
+        "shelf life"
+      ],
+      "must_mention": [
+        "fresh",
+        "stale",
+        "expire"
+      ],
+      "metrics": {
+        "score": 0.16666666666666666,
+        "must_mention_coverage": 0.0,
+        "themes_coverage": 0.3333333333333333,
+        "punted": false,
+        "mentioned_keywords": [],
+        "mentioned_themes": [
+          "expiration date"
+        ]
+      },
+      "time_seconds": 13.296319961547852
+    },
+    {
+      "id": "q9",
+      "question": "Is it worth the price compared to local grocery stores?",
+      "answer": "Whether it is worth the price compared to local stores varies by product:\n\n* For one product, the user notes that while the Amazon price \"isn't bad at all\" for the convenience, \"it is still cheaper to run down and pick up a case of this at the grocery store\" (Review 1).\n* Another user found the price \"dissapointing\" compared to local stores, noting they can get the product at Kroger for $1 (Review 2).\n* One user found the price to be \"the same price or slightly less\" than the pet store (Review 3).\n* Another user considers the price \"a great deal,\" stating it is \"about half of what I find them for in the store\" (Review 5).",
+      "sources_count": 5,
+      "expected_themes": [
+        "cheaper",
+        "expensive",
+        "good value"
+      ],
+      "must_mention": [
+        "price",
+        "store",
+        "value",
+        "cost"
+      ],
+      "metrics": {
+        "score": 0.41666666666666663,
+        "must_mention_coverage": 0.5,
+        "themes_coverage": 0.3333333333333333,
+        "punted": false,
+        "mentioned_keywords": [
+          "price",
+          "store"
+        ],
+        "mentioned_themes": [
+          "cheaper"
+        ]
+      },
+      "time_seconds": 25.504627466201782
+    },
+    {
+      "id": "q10",
+      "question": "Does this snack contain peanuts?",
+      "answer": "Yes, according to Review 3, the product arrived \"labeled as Jumbo Salted Peanuts\" and contained \"peanuts\".",
+      "sources_count": 5,
+      "expected_themes": [
+        "allergy",
+        "peanuts",
+        "nuts"
+      ],
+      "must_mention": [
+        "peanut",
+        "nut",
+        "allergy"
+      ],
+      "metrics": {
+        "score": 0.6666666666666666,
+        "must_mention_coverage": 0.6666666666666666,
+        "themes_coverage": 0.6666666666666666,
+        "punted": false,
+        "mentioned_keywords": [
+          "peanut",
+          "nut"
+        ],
+        "mentioned_themes": [
+          "peanuts",
+          "nuts"
+        ]
+      },
+      "time_seconds": 10.787598848342896
+    },
+    {
+      "id": "q11",
+      "question": "What do reviewers say about the sugar content?",
+      "answer": "Reviewers have mixed opinions on the sugar content:\n\n* One reviewer states it is \"just sugar in the raw\" and is \"suppose to be better for you or something.\"\n* Another reviewer mentions that the \"molasses content was not up to par\" compared to previous purchases.\n* One person notes that it \"isn't as overly sweet tasting as 'regular' sugar.\"\n* Conversely, another reviewer claims \"There is nothing healthy about it\" and that \"It is just carbs and sugars.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "too sweet",
+        "sugar-free",
+        "diabetic"
+      ],
+      "must_mention": [
+        "sugar",
+        "sweet"
+      ],
+      "metrics": {
+        "score": 0.5,
+        "must_mention_coverage": 1.0,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [
+          "sugar",
+          "sweet"
+        ],
+        "mentioned_themes": []
+      },
+      "time_seconds": 21.67929196357727
+    },
+    {
+      "id": "q12",
+      "question": "Can this be used in a Keurig machine?",
+      "answer": "Yes, this can be used in a Keurig machine; one reviewer states that \"Green Mountain 'Nantucket Blend' K-Cups make a very good cup of coffee in my Keurig B-40 B40 Elite Gourmet Single-Cup Home-Brewing System.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "k-cup",
+        "compatible",
+        "doesn't fit"
+      ],
+      "must_mention": [
+        "Keurig",
+        "machine",
+        "k-cup",
+        "pod"
+      ],
+      "metrics": {
+        "score": 0.5416666666666666,
+        "must_mention_coverage": 0.75,
+        "themes_coverage": 0.3333333333333333,
+        "punted": false,
+        "mentioned_keywords": [
+          "Keurig",
+          "machine",
+          "k-cup"
+        ],
+        "mentioned_themes": [
+          "k-cup"
+        ]
+      },
+      "time_seconds": 12.234097480773926
+    },
+    {
+      "id": "q13",
+      "question": "Are the chips usually crushed upon arrival?",
+      "answer": "Experiences vary among reviewers:\n\n* Some report that the chips arrive damaged, with one reviewer stating \"most of the chips were broken\" (Review 1) and another noting that \"some bags end up as crumbs\" (Review 3).\n* Others report they arrive in good condition, stating \"All the chips are as they should be\" (Review 2), \"Chips are never crushed or broken\" (Review 4), and that they \"came packaged perfectly\" (Review 5).",
+      "sources_count": 5,
+      "expected_themes": [
+        "crushed",
+        "crumbs",
+        "perfect condition"
+      ],
+      "must_mention": [
+        "crushed",
+        "broken",
+        "crumbs"
+      ],
+      "metrics": {
+        "score": 0.8333333333333333,
+        "must_mention_coverage": 1.0,
+        "themes_coverage": 0.6666666666666666,
+        "punted": false,
+        "mentioned_keywords": [
+          "crushed",
+          "broken",
+          "crumbs"
+        ],
+        "mentioned_themes": [
+          "crushed",
+          "crumbs"
+        ]
+      },
+      "time_seconds": 20.207000255584717
+    },
+    {
+      "id": "q14",
+      "question": "Does the protein powder mix well with water?",
+      "answer": "Yes, according to Review 3, \"The powder dissolves instantly. Even in water!\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "clumpy",
+        "smooth",
+        "blender needed"
+      ],
+      "must_mention": [
+        "mix",
+        "clump",
+        "blend"
+      ],
+      "metrics": {
+        "score": 0.0,
+        "must_mention_coverage": 0.0,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [],
+        "mentioned_themes": []
+      },
+      "time_seconds": 10.143320798873901
+    },
+    {
+      "id": "q15",
+      "question": "What is the general consensus on the spicy flavor?",
+      "answer": "The general consensus on the spicy flavor is positive, though opinions on the intensity vary:\n\n*   **Overall Taste:** Reviewers described it as \"great flavor\" (Review 2) and one user stated, \"I really loved the spicy flavor these had\" (Review 1).\n*   **Heat Level:** One reviewer noted that \"If you aren't used to the heat this might bother you and if you like hot hot foods this might not be enough\" (Review 1). Another mentioned the chips \"are not super spicy\" and that the heat is \"more of a lingering taste that bites afterwards\" (Review 3).\n*   **Flavor Profile:** One reviewer noted the chips \"taste sort of sweet at first\" (Review 3).\n*   **Recommendations:** It is suggested that \"those that don't like spicy should stay away from this\" (Review 4) and \"if you like spicy, then these are for you\" (Review 5).",
+      "sources_count": 5,
+      "expected_themes": [
+        "too hot",
+        "mild",
+        "good kick"
+      ],
+      "must_mention": [
+        "spicy",
+        "heat",
+        "hot"
+      ],
+      "metrics": {
+        "score": 0.5,
+        "must_mention_coverage": 1.0,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [
+          "spicy",
+          "heat",
+          "hot"
+        ],
+        "mentioned_themes": []
+      },
+      "time_seconds": 27.57859230041504
+    },
+    {
+      "id": "q16",
+      "question": "Are the gummy bears melted when delivered in summer?",
+      "answer": "Yes, the gummy bears can melt when delivered in warm weather because there is \"no insulating packaging with ice packs,\" leading one reviewer to note that \"the berries had melted\" and suggesting that customers \"order only in cold weather.\"",
+      "sources_count": 5,
+      "expected_themes": [
+        "melted",
+        "blob",
+        "ice pack"
+      ],
+      "must_mention": [
+        "melt",
+        "summer",
+        "heat"
+      ],
+      "metrics": {
+        "score": 0.5,
+        "must_mention_coverage": 0.3333333333333333,
+        "themes_coverage": 0.6666666666666666,
+        "punted": false,
+        "mentioned_keywords": [
+          "melt"
+        ],
+        "mentioned_themes": [
+          "melted",
+          "ice pack"
+        ]
+      },
+      "time_seconds": 16.820981740951538
+    },
+    {
+      "id": "q17",
+      "question": "How does the vanilla flavor compare to the chocolate?",
+      "answer": "The regular chocolate Tootsie Rolls are \"good,\" but the vanilla ones are \"the BEST EVER!!\" (Review 1).",
+      "sources_count": 5,
+      "expected_themes": [
+        "prefer chocolate",
+        "vanilla is artificial",
+        "both good"
+      ],
+      "must_mention": [
+        "vanilla",
+        "chocolate"
+      ],
+      "metrics": {
+        "score": 0.5,
+        "must_mention_coverage": 1.0,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [
+          "vanilla",
+          "chocolate"
+        ],
+        "mentioned_themes": []
+      },
+      "time_seconds": 13.335205078125
+    },
+    {
+      "id": "q18",
+      "question": "Is the cat food suitable for senior cats with bad teeth?",
+      "answer": "I don't know.",
+      "sources_count": 5,
+      "expected_themes": [
+        "soft",
+        "easy to chew",
+        "hard"
+      ],
+      "must_mention": [
+        "cat",
+        "senior",
+        "teeth",
+        "chew"
+      ],
+      "metrics": {
+        "score": 0.0,
+        "must_mention_coverage": 0.0,
+        "themes_coverage": 0.0,
+        "punted": true
+      },
+      "time_seconds": 19.297733306884766
+    },
+    {
+      "id": "q19",
+      "question": "Did anyone get sick after eating this?",
+      "answer": "The provided reviews do not explicitly state that anyone got sick, but they do report severe physical reactions:\n\n* One reviewer mentioned that the chips are so salty that \"a few leave my tongue and roof of my mouth burning\" (Review 3).\n* Another reviewer stated, \"Skin literally peeled off my lips and inside my mouth after eating these\" (Review 5).",
+      "sources_count": 5,
+      "expected_themes": [
+        "food poisoning",
+        "upset stomach",
+        "fine"
+      ],
+      "must_mention": [
+        "sick",
+        "stomach",
+        "nausea",
+        "ill"
+      ],
+      "metrics": {
+        "score": 0.125,
+        "must_mention_coverage": 0.25,
+        "themes_coverage": 0.0,
+        "punted": false,
+        "mentioned_keywords": [
+          "sick"
+        ],
+        "mentioned_themes": []
+      },
+      "time_seconds": 50.41739821434021
+    },
+    {
+      "id": "q20",
+      "question": "Is the olive oil authentic extra virgin or fake?",
+      "answer": "I don't know.",
+      "sources_count": 5,
+      "expected_themes": [
+        "real deal",
+        "fake",
+        "rancid",
+        "pure"
+      ],
+      "must_mention": [
+        "authentic",
+        "fake",
+        "real",
+        "pure"
+      ],
+      "metrics": {
+        "score": 0.0,
+        "must_mention_coverage": 0.0,
+        "themes_coverage": 0.0,
+        "punted": true
+      },
+      "time_seconds": 19.01767635345459
+    }
+  ]
+}

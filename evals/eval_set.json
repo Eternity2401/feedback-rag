@@ -1,0 +1,142 @@
+[
+  {
+    "id": "q1",
+    "question": "What do customers say about the packaging of the product?",
+    "expected_themes": ["damaged", "difficult to open", "good seal"],
+    "must_mention": ["packaging", "box", "seal"],
+    "category": "complaint"
+  },
+  {
+    "id": "q2",
+    "question": "Are there any mentions of the coffee being too bitter?",
+    "expected_themes": ["bitter", "strong", "burnt"],
+    "must_mention": ["bitter", "taste"],
+    "category": "sentiment"
+  },
+  {
+    "id": "q3",
+    "question": "How does this brand compare to Starbucks?",
+    "expected_themes": ["better than", "worse than", "similar"],
+    "must_mention": ["Starbucks"],
+    "category": "comparison"
+  },
+  {
+    "id": "q4",
+    "question": "Do dogs like the taste of these treats?",
+    "expected_themes": ["love it", "refuse to eat", "obsessed"],
+    "must_mention": ["dog", "dogs", "puppy", "treat"],
+    "category": "sentiment"
+  },
+  {
+    "id": "q5",
+    "question": "Is this product gluten-free?",
+    "expected_themes": ["gluten-free", "celiac", "wheat"],
+    "must_mention": ["gluten"],
+    "category": "information"
+  },
+  {
+    "id": "q6",
+    "question": "What are the common complaints about shipping?",
+    "expected_themes": ["delayed", "melted", "broken"],
+    "must_mention": ["shipping", "delivery", "arrived"],
+    "category": "complaint"
+  },
+  {
+    "id": "q7",
+    "question": "Is the tea decaffeinated?",
+    "expected_themes": ["decaf", "caffeine-free", "sleep"],
+    "must_mention": ["decaf", "caffeine"],
+    "category": "information"
+  },
+  {
+    "id": "q8",
+    "question": "How long does the product stay fresh?",
+    "expected_themes": ["stale", "expiration date", "shelf life"],
+    "must_mention": ["fresh", "stale", "expire"],
+    "category": "information"
+  },
+  {
+    "id": "q9",
+    "question": "Is it worth the price compared to local grocery stores?",
+    "expected_themes": ["cheaper", "expensive", "good value"],
+    "must_mention": ["price", "store", "value", "cost"],
+    "category": "comparison"
+  },
+  {
+    "id": "q10",
+    "question": "Does this snack contain peanuts?",
+    "expected_themes": ["allergy", "peanuts", "nuts"],
+    "must_mention": ["peanut", "nut", "allergy"],
+    "category": "information"
+  },
+  {
+    "id": "q11",
+    "question": "What do reviewers say about the sugar content?",
+    "expected_themes": ["too sweet", "sugar-free", "diabetic"],
+    "must_mention": ["sugar", "sweet"],
+    "category": "sentiment"
+  },
+  {
+    "id": "q12",
+    "question": "Can this be used in a Keurig machine?",
+    "expected_themes": ["k-cup", "compatible", "doesn't fit"],
+    "must_mention": ["Keurig", "machine", "k-cup", "pod"],
+    "category": "information"
+  },
+  {
+    "id": "q13",
+    "question": "Are the chips usually crushed upon arrival?",
+    "expected_themes": ["crushed", "crumbs", "perfect condition"],
+    "must_mention": ["crushed", "broken", "crumbs"],
+    "category": "complaint"
+  },
+  {
+    "id": "q14",
+    "question": "Does the protein powder mix well with water?",
+    "expected_themes": ["clumpy", "smooth", "blender needed"],
+    "must_mention": ["mix", "clump", "blend"],
+    "category": "sentiment"
+  },
+  {
+    "id": "q15",
+    "question": "What is the general consensus on the spicy flavor?",
+    "expected_themes": ["too hot", "mild", "good kick"],
+    "must_mention": ["spicy", "heat", "hot"],
+    "category": "sentiment"
+  },
+  {
+    "id": "q16",
+    "question": "Are the gummy bears melted when delivered in summer?",
+    "expected_themes": ["melted", "blob", "ice pack"],
+    "must_mention": ["melt", "summer", "heat"],
+    "category": "complaint"
+  },
+  {
+    "id": "q17",
+    "question": "How does the vanilla flavor compare to the chocolate?",
+    "expected_themes": ["prefer chocolate", "vanilla is artificial", "both good"],
+    "must_mention": ["vanilla", "chocolate"],
+    "category": "comparison"
+  },
+  {
+    "id": "q18",
+    "question": "Is the cat food suitable for senior cats with bad teeth?",
+    "expected_themes": ["soft", "easy to chew", "hard"],
+    "must_mention": ["cat", "senior", "teeth", "chew"],
+    "category": "information"
+  },
+  {
+    "id": "q19",
+    "question": "Did anyone get sick after eating this?",
+    "expected_themes": ["food poisoning", "upset stomach", "fine"],
+    "must_mention": ["sick", "stomach", "nausea", "ill"],
+    "category": "complaint"
+  },
+  {
+    "id": "q20",
+    "question": "Is the olive oil authentic extra virgin or fake?",
+    "expected_themes": ["real deal", "fake", "rancid", "pure"],
+    "must_mention": ["authentic", "fake", "real", "pure"],
+    "category": "information"
+  }
+]
