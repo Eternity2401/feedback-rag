@@ -3,3 +3,4 @@ chromadb
 pandas
 python-dotenv
 tqdm
+streamlit>=1.30.0
