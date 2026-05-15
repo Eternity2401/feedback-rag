@@ -1,6 +1,6 @@
 # Feedback RAG: Amazon Product Review Analyzer
 
-> **Note**: This project switched from `gemini-2.0-flash` to `Gemma-4-31B-IT` mid-development due to free-tier model availability. The evaluation metrics below reflect the performance of the Gemma model.
+>
 
 This project implements a complete Retrieval-Augmented Generation (RAG) pipeline to analyze Amazon product reviews. It uses Google's latest embedding and generation models (Free Tier) to provide factual, cited answers to complex consumer questions.
 
