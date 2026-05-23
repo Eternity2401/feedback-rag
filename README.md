@@ -5,8 +5,8 @@ This project implements a complete Retrieval-Augmented Generation (RAG) pipeline
 ## Features
 
 - **Ingestion**: Efficiently chunks and embeds CSV data into a local ChromaDB vector store.
-- **Retrieval**: Performs semantic search using `gemini-embedding-2` to find the top-5 most relevant reviews.
-- **Generation**: Produces multi-point, cited answers using the `Gemma-27B-IT` model.
+- **Retrieval**: Performs semantic search using `gemini-embedding-001` to find the top-5 most relevant reviews.
+- **Generation**: Produces multi-point, cited answers using the `Gemma-3-27B-IT` model.
 - **Evaluation**: Includes a custom evaluation suite to measure accuracy, must-mention coverage, and theme alignment.
 - **Resilience**: Robust retry logic with exponential backoff to navigate strict free-tier rate limits.
 
