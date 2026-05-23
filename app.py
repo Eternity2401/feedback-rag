@@ -23,7 +23,7 @@ st.sidebar.info(
     """
     - **Dataset**: 850 Amazon Fine Food Reviews
     - **Embeddings**: `gemini-embedding-001`
-    - **Generation**: `Gemma-4-31B-IT`
+    - **Generation**: `Gemma-3-27B-IT`
     """
 )
 

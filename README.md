@@ -1,14 +1,12 @@
 # Feedback RAG: Amazon Product Review Analyzer
 
->
-
 This project implements a complete Retrieval-Augmented Generation (RAG) pipeline to analyze Amazon product reviews. It uses Google's latest embedding and generation models (Free Tier) to provide factual, cited answers to complex consumer questions.
 
 ## Features
 
 - **Ingestion**: Efficiently chunks and embeds CSV data into a local ChromaDB vector store.
 - **Retrieval**: Performs semantic search using `gemini-embedding-2` to find the top-5 most relevant reviews.
-- **Generation**: Produces multi-point, cited answers using the `Gemma-4-31B-IT` model.
+- **Generation**: Produces multi-point, cited answers using the `Gemma-27B-IT` model.
 - **Evaluation**: Includes a custom evaluation suite to measure accuracy, must-mention coverage, and theme alignment.
 - **Resilience**: Robust retry logic with exponential backoff to navigate strict free-tier rate limits.
 
@@ -39,12 +37,12 @@ Below are actual outputs from the evaluation suite showing the system's ability 
 
 - **Embeddings:** Google Gemini `gemini-embedding-2` (3072 dims, free tier)
 - **Vector Store:** ChromaDB (local persistent)
-- **LLM:** Google Gemma `gemma-4-31b-it` (Open weights, free tier via SDK)
+- **LLM:** Google Gemma `Gemma-27B-IT` (Open weights, free tier via SDK)
 - **Data Handling:** pandas
 
 ## Evaluation Results
 
-**Current Status**: Evaluation complete for the initial 850-document set using **Gemma-4-31B-IT** and robust retry logic.
+**Current Status**: Evaluation complete for the initial 850-document set using **Gemma-27B-IT** and robust retry logic.
 
 - **Total Documents Ingested:** 850
 - **Average Accuracy (Score):** 39% 
@@ -85,7 +83,7 @@ The current project runs entirely on the **Google Free Tier**. Below is an analy
 | --- | --- | --- |
 | Gemini Embedding | $0.025 | N/A |
 | Gemini 2.0 Flash | $0.10 | $0.40 |
-| Gemma-4-31B (Estimated) | $0.15 | $0.60 |
+| Gemma-3-27B (Estimated) | $0.15 | $0.60 |
 
 ### Scaling Projections:
 | Volume | Math | Estimated Total Cost |
