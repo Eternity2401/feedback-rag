@@ -154,5 +154,82 @@ def main() -> None:
     print(f"\n[DONE] Ingested {ingested} new documents.")
 
 
+def ingest_synthetic_feedbacks(csv_path: str = "data/triage_feedbacks.csv") -> None:
+    """
+    Ingest synthetic feedbacks into the existing ChromaDB with source='synthetic' metadata.
+    Resume-safe: skips IDs already in the collection.
+    Respects the 5 RPM embedding limit via time.sleep(13) between calls.
+    """
+    load_dotenv()
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        print("[ERROR] GOOGLE_API_KEY not found.")
+        return
+
+    client = genai.Client(api_key=api_key)
+
+    csv_file = Path(csv_path)
+    if not csv_file.exists():
+        print(f"[ERROR] CSV not found at {csv_path}")
+        return
+
+    print(f"[..] Loading synthetic feedbacks from {csv_path} ...")
+    df = pd.read_csv(csv_file)
+    
+    # Set up ChromaDB (using same setup as main)
+    chroma_client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+    collection = chroma_client.get_or_create_collection(
+        name=COLLECTION,
+        metadata={"hnsw:space": "cosine"},
+    )
+
+    # Fetch existing IDs
+    existing_data = collection.get(include=[])
+    existing_ids = set(existing_data["ids"])
+
+    newly_ingested = 0
+    total_feedbacks = len(df)
+    
+    print(f"[..] Processing {total_feedbacks} synthetic feedbacks...")
+    
+    for _, row in df.iterrows():
+        fb_id = row["id"]
+        doc_id = f"synthetic_{fb_id}"
+        text = str(row["text"])
+        
+        if doc_id in existing_ids:
+            continue
+            
+        print(f"  [+] Embedding and adding ID {doc_id} ...")
+        
+        # Respect the 5 RPM embedding limit via sleep(13) before the embedding call
+        time.sleep(13)
+        
+        try:
+            result = client.models.embed_content(
+                model=EMBED_MODEL,
+                contents=[text],
+                config=types.EmbedContentConfig(
+                    task_type="RETRIEVAL_DOCUMENT",
+                ),
+            )
+            embedding = result.embeddings[0].values
+            
+            # Add to the collection
+            collection.add(
+                ids=[doc_id],
+                embeddings=[embedding],
+                documents=[text],
+                metadatas=[{"source": "synthetic"}]
+            )
+            newly_ingested += 1
+            
+        except Exception as e:
+            print(f"  [ERROR] Failed to ingest ID {doc_id}: {e}")
+            
+    print(f"[DONE] Ingested {newly_ingested} new synthetic feedbacks.")
+
+
 if __name__ == "__main__":
     main()
+

@@ -1,0 +1,240 @@
+[2026-05-25 01:30:13] ID 1 | TEXT: App crashes every time I open it on Android 14. Lost all my data after the latest update. This is unacceptable for a paid app.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'bug', 'urgency': 'critical', 'recommended_team': 'engineering', 'reasoning': 'The user reports a complete app crash and permanent data loss on a specific OS version, which is a critical technical failure.'}
+  ROUTING: {'destination': 'engineering', 'queue': 'P0', 'priority_score': 10}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) App crashes every time I open it on Android 14. Lost all my data after the latest update. This is unacceptable for a paid app.
+    2. [synthetic] (dist: 0.275) The new pricing is way too expensive. Lost two team members because of it. Reconsidering our subscription.
+    3. [synthetic] (dist: 0.279) Documentation is outdated. API endpoints in the docs return 404 errors. Wasted my afternoon.
+--------------------------------------------------------------------------------
+[2026-05-25 01:30:53] ID 2 | TEXT: Would love a dark mode option for the dashboard, especially for late-night use. Eye strain is real.
+  CLASSIFICATION: {'sentiment': 'neutral', 'category': 'feature_request', 'urgency': 'low', 'recommended_team': 'product', 'reasoning': 'The user is requesting a new feature (dark mode) to improve the user experience and reduce eye strain.'}
+  ROUTING: {'destination': 'product', 'queue': 'backlog', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Would love a dark mode option for the dashboard, especially for late-night use. Eye strain is real.
+    2. [synthetic] (dist: 0.291) Please add keyboard shortcuts. Power users need them to work fast.
+    3. [synthetic] (dist: 0.316) An integration with Slack would make this 10x more useful for my team. Please prioritize it.
+--------------------------------------------------------------------------------
+[2026-05-25 01:31:31] ID 3 | TEXT: Just got my order in 2 days. Packaging was perfect and product quality is amazing! Will definitely reorder.
+  CLASSIFICATION: {'sentiment': 'positive', 'category': 'praise', 'urgency': 'low', 'recommended_team': 'marketing', 'reasoning': 'The customer expresses high satisfaction with the delivery speed, packaging, and product quality, which serves as a positive testimonial.'}
+  ROUTING: {'destination': 'marketing', 'queue': 'wins_board', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Just got my order in 2 days. Packaging was perfect and product quality is amazing! Will definitely reorder.
+    2. [amazon] (dist: 0.210) Great service! Items arrived faster than expected. Very efficient! Will use this seller again. I highly recommend this seller! Thank you for the excellent service!
+    3. [synthetic] (dist: 0.243) Customer support is fantastic. Got my issue resolved in 10 minutes via chat. Thank you.
+--------------------------------------------------------------------------------
+[2026-05-25 01:32:10] ID 4 | TEXT: Why is the loading so slow? Spent 30 seconds waiting for a simple page to render.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'complaint', 'urgency': 'high', 'recommended_team': 'engineering', 'reasoning': 'The user is reporting a significant performance issue with page load times, which directly impacts usability and requires technical optimization.'}
+  ROUTING: {'destination': 'support', 'queue': 'priority', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Why is the loading so slow? Spent 30 seconds waiting for a simple page to render.
+    2. [synthetic] (dist: 0.264) Refund process took 3 weeks. That is way too long for a SaaS company in 2026.
+    3. [synthetic] (dist: 0.283) Onboarding flow is confusing. Took me 30 minutes to figure out how to create my first project.
+--------------------------------------------------------------------------------
+[2026-05-25 01:32:46] ID 5 | TEXT: The export to CSV button does not work in Safari. Have to use Chrome every time. Annoying.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'bug', 'urgency': 'medium', 'recommended_team': 'engineering', 'reasoning': 'The user is reporting a specific functional failure of the CSV export feature in the Safari browser, which indicates a technical bug.'}
+  ROUTING: {'destination': 'engineering', 'queue': 'P2', 'priority_score': 5}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) The export to CSV button does not work in Safari. Have to use Chrome every time. Annoying.
+    2. [synthetic] (dist: 0.256) The web app is broken on Firefox v123. Buttons do not render. Had to switch to Chrome.
+    3. [synthetic] (dist: 0.306) I love that I hate this app. Cannot stop using it but it frustrates me daily.
+--------------------------------------------------------------------------------
+[2026-05-25 01:33:27] ID 6 | TEXT: Can you add multi-language support? Specifically Hindi and Spanish would help a lot in our market.
+  CLASSIFICATION: {'sentiment': 'neutral', 'category': 'feature_request', 'urgency': 'medium', 'recommended_team': 'product', 'reasoning': "The customer is requesting a new capability (multi-language support) to improve the product's utility in their specific market."}
+  ROUTING: {'destination': 'product', 'queue': 'backlog', 'priority_score': 5}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Can you add multi-language support? Specifically Hindi and Spanish would help a lot in our market.
+    2. [synthetic] (dist: 0.283) Please add keyboard shortcuts. Power users need them to work fast.
+    3. [synthetic] (dist: 0.292) An integration with Slack would make this 10x more useful for my team. Please prioritize it.
+--------------------------------------------------------------------------------
+[2026-05-25 01:34:02] ID 7 | TEXT: Customer support is fantastic. Got my issue resolved in 10 minutes via chat. Thank you.
+  CLASSIFICATION: {'sentiment': 'positive', 'category': 'praise', 'urgency': 'low', 'recommended_team': 'support', 'reasoning': 'The customer is expressing high satisfaction and gratitude for the quick resolution provided by the support team.'}
+  ROUTING: {'destination': 'marketing', 'queue': 'wins_board', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Customer support is fantastic. Got my issue resolved in 10 minutes via chat. Thank you.
+    2. [synthetic] (dist: 0.243) Just got my order in 2 days. Packaging was perfect and product quality is amazing! Will definitely reorder.
+    3. [synthetic] (dist: 0.268) Brilliant product. Switching from Notion was the best decision for our team. Keep shipping.
+--------------------------------------------------------------------------------
+[2026-05-25 01:34:40] ID 8 | TEXT: The new pricing is way too expensive. Lost two team members because of it. Reconsidering our subscription.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'billing', 'urgency': 'high', 'recommended_team': 'billing', 'reasoning': 'The customer is dissatisfied with the new pricing and is explicitly threatening to cancel their subscription, indicating a high risk of churn.'}
+  ROUTING: {'destination': 'billing', 'queue': 'refunds', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) The new pricing is way too expensive. Lost two team members because of it. Reconsidering our subscription.
+    2. [synthetic] (dist: 0.250) Server downtime yesterday for 4 hours during business hours. We lost client meetings because of it.
+    3. [synthetic] (dist: 0.273) Documentation is outdated. API endpoints in the docs return 404 errors. Wasted my afternoon.
+--------------------------------------------------------------------------------
+[2026-05-25 01:35:16] ID 9 | TEXT: Payment failed thrice in checkout but money was deducted three times. Need refund ASAP. Order ID 45123.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'billing', 'urgency': 'critical', 'recommended_team': 'billing', 'reasoning': 'The customer was charged multiple times for a failed transaction and is requesting an immediate refund.'}
+  ROUTING: {'destination': 'billing', 'queue': 'refunds', 'priority_score': 10}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Payment failed thrice in checkout but money was deducted three times. Need refund ASAP. Order ID 45123.
+    2. [synthetic] (dist: 0.253) Charged twice for the same subscription this month. Card statement screenshot attached. Need fix.
+    3. [synthetic] (dist: 0.336) Refund process took 3 weeks. That is way too long for a SaaS company in 2026.
+--------------------------------------------------------------------------------
+[2026-05-25 01:36:03] ID 10 | TEXT: An integration with Slack would make this 10x more useful for my team. Please prioritize it.
+  CLASSIFICATION: {'sentiment': 'neutral', 'category': 'feature_request', 'urgency': 'medium', 'recommended_team': 'product', 'reasoning': "The customer is requesting a new Slack integration to increase the product's utility for their team."}
+  ROUTING: {'destination': 'product', 'queue': 'backlog', 'priority_score': 5}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) An integration with Slack would make this 10x more useful for my team. Please prioritize it.
+    2. [synthetic] (dist: 0.244) Please add keyboard shortcuts. Power users need them to work fast.
+    3. [synthetic] (dist: 0.279) Brilliant product. Switching from Notion was the best decision for our team. Keep shipping.
+--------------------------------------------------------------------------------
+[2026-05-25 01:36:39] ID 11 | TEXT: The mobile app keeps logging me out randomly. Have to re-enter password 5 times a day.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'bug', 'urgency': 'high', 'recommended_team': 'engineering', 'reasoning': 'The user is reporting a recurring technical failure where they are randomly logged out of the app, which significantly disrupts the user experience.'}
+  ROUTING: {'destination': 'engineering', 'queue': 'P1', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) The mobile app keeps logging me out randomly. Have to re-enter password 5 times a day.
+    2. [synthetic] (dist: 0.289) I love that I hate this app. Cannot stop using it but it frustrates me daily.
+    3. [synthetic] (dist: 0.325) The web app is broken on Firefox v123. Buttons do not render. Had to switch to Chrome.
+--------------------------------------------------------------------------------
+[2026-05-25 01:37:16] ID 12 | TEXT: Love the new UI redesign, clean and modern. Team productivity has gone up noticeably.
+  CLASSIFICATION: {'sentiment': 'positive', 'category': 'praise', 'urgency': 'low', 'recommended_team': 'product', 'reasoning': 'The customer is expressing high satisfaction with the new UI redesign and its positive impact on team productivity.'}
+  ROUTING: {'destination': 'marketing', 'queue': 'wins_board', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Love the new UI redesign, clean and modern. Team productivity has gone up noticeably.
+    2. [synthetic] (dist: 0.223) Brilliant product. Switching from Notion was the best decision for our team. Keep shipping.
+    3. [synthetic] (dist: 0.247) Just discovered the API. Built a custom integration in an afternoon. Really well-designed endpoints.
+--------------------------------------------------------------------------------
+[2026-05-25 01:37:51] ID 13 | TEXT: The search function returns irrelevant results. Searching for invoice shows me random PDFs.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'bug', 'urgency': 'medium', 'recommended_team': 'engineering', 'reasoning': 'The user is reporting a failure in the search functionality where irrelevant results are returned, indicating a technical bug in the search algorithm.'}
+  ROUTING: {'destination': 'engineering', 'queue': 'P2', 'priority_score': 5}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) The search function returns irrelevant results. Searching for invoice shows me random PDFs.
+    2. [synthetic] (dist: 0.328) The export to CSV button does not work in Safari. Have to use Chrome every time. Annoying.
+    3. [synthetic] (dist: 0.332) Documentation is outdated. API endpoints in the docs return 404 errors. Wasted my afternoon.
+--------------------------------------------------------------------------------
+[2026-05-25 01:38:43] ID 14 | TEXT: Documentation is outdated. API endpoints in the docs return 404 errors. Wasted my afternoon.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'bug', 'urgency': 'high', 'recommended_team': 'engineering', 'reasoning': 'The user is reporting broken API endpoints in the documentation, which is a technical failure that prevents them from using the product.'}
+  ROUTING: {'destination': 'engineering', 'queue': 'P1', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Documentation is outdated. API endpoints in the docs return 404 errors. Wasted my afternoon.
+    2. [synthetic] (dist: 0.270) Server downtime yesterday for 4 hours during business hours. We lost client meetings because of it.
+    3. [synthetic] (dist: 0.273) The new pricing is way too expensive. Lost two team members because of it. Reconsidering our subscription.
+--------------------------------------------------------------------------------
+[2026-05-25 01:39:21] ID 15 | TEXT: Want a calendar view for my projects not just list view. Would help with planning.
+  CLASSIFICATION: {'sentiment': 'neutral', 'category': 'feature_request', 'urgency': 'low', 'recommended_team': 'product', 'reasoning': 'The user is requesting a new calendar view functionality to improve their planning workflow, which is a clear feature request.'}
+  ROUTING: {'destination': 'product', 'queue': 'backlog', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Want a calendar view for my projects not just list view. Would help with planning.
+    2. [synthetic] (dist: 0.292) Please add keyboard shortcuts. Power users need them to work fast.
+    3. [synthetic] (dist: 0.314) An integration with Slack would make this 10x more useful for my team. Please prioritize it.
+--------------------------------------------------------------------------------
+[2026-05-25 01:39:57] ID 16 | TEXT: Charged twice for the same subscription this month. Card statement screenshot attached. Need fix.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'billing', 'urgency': 'high', 'recommended_team': 'billing', 'reasoning': 'The customer reports a duplicate charge for their subscription, which is a financial error requiring immediate correction.'}
+  ROUTING: {'destination': 'billing', 'queue': 'refunds', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Charged twice for the same subscription this month. Card statement screenshot attached. Need fix.
+    2. [synthetic] (dist: 0.253) Payment failed thrice in checkout but money was deducted three times. Need refund ASAP. Order ID 45123.
+    3. [synthetic] (dist: 0.362) The new pricing is way too expensive. Lost two team members because of it. Reconsidering our subscription.
+--------------------------------------------------------------------------------
+[2026-05-25 01:40:33] ID 17 | TEXT: Onboarding flow is confusing. Took me 30 minutes to figure out how to create my first project.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'complaint', 'urgency': 'medium', 'recommended_team': 'product', 'reasoning': 'The user is expressing frustration with the onboarding user experience, which is a product design issue.'}
+  ROUTING: {'destination': 'support', 'queue': 'normal', 'priority_score': 5}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Onboarding flow is confusing. Took me 30 minutes to figure out how to create my first project.
+    2. [synthetic] (dist: 0.254) Refund process took 3 weeks. That is way too long for a SaaS company in 2026.
+    3. [synthetic] (dist: 0.280) Documentation is outdated. API endpoints in the docs return 404 errors. Wasted my afternoon.
+--------------------------------------------------------------------------------
+[2026-05-25 01:41:10] ID 18 | TEXT: Brilliant product. Switching from Notion was the best decision for our team. Keep shipping.
+  CLASSIFICATION: {'sentiment': 'positive', 'category': 'praise', 'urgency': 'low', 'recommended_team': 'marketing', 'reasoning': 'The customer expresses high satisfaction and explicitly praises the product as a superior alternative to a competitor.'}
+  ROUTING: {'destination': 'marketing', 'queue': 'wins_board', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Brilliant product. Switching from Notion was the best decision for our team. Keep shipping.
+    2. [synthetic] (dist: 0.223) Love the new UI redesign, clean and modern. Team productivity has gone up noticeably.
+    3. [synthetic] (dist: 0.240) Just discovered the API. Built a custom integration in an afternoon. Really well-designed endpoints.
+--------------------------------------------------------------------------------
+[2026-05-25 01:41:49] ID 19 | TEXT: Can the AI assistant remember context across sessions? Right now I have to re-explain every time.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'feature_request', 'urgency': 'medium', 'recommended_team': 'product', 'reasoning': 'The user is requesting a new capability for cross-session memory to resolve the frustration of having to repeat information.'}
+  ROUTING: {'destination': 'product', 'queue': 'backlog', 'priority_score': 5}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Can the AI assistant remember context across sessions? Right now I have to re-explain every time.
+    2. [synthetic] (dist: 0.374) The mobile app keeps logging me out randomly. Have to re-enter password 5 times a day.
+    3. [synthetic] (dist: 0.380) Can you add multi-language support? Specifically Hindi and Spanish would help a lot in our market.
+--------------------------------------------------------------------------------
+[2026-05-25 01:42:29] ID 20 | TEXT: Server downtime yesterday for 4 hours during business hours. We lost client meetings because of it.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'complaint', 'urgency': 'critical', 'recommended_team': 'engineering', 'reasoning': 'The customer experienced a significant service outage during business hours that resulted in lost business, indicating a critical system failure.'}
+  ROUTING: {'destination': 'support', 'queue': 'priority', 'priority_score': 10}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Server downtime yesterday for 4 hours during business hours. We lost client meetings because of it.
+    2. [synthetic] (dist: 0.250) The new pricing is way too expensive. Lost two team members because of it. Reconsidering our subscription.
+    3. [synthetic] (dist: 0.270) Documentation is outdated. API endpoints in the docs return 404 errors. Wasted my afternoon.
+--------------------------------------------------------------------------------
+[2026-05-25 01:43:07] ID 21 | TEXT: Please add keyboard shortcuts. Power users need them to work fast.
+  CLASSIFICATION: {'sentiment': 'neutral', 'category': 'feature_request', 'urgency': 'medium', 'recommended_team': 'product', 'reasoning': 'The user is requesting a new functionality (keyboard shortcuts) to improve efficiency for power users.'}
+  ROUTING: {'destination': 'product', 'queue': 'backlog', 'priority_score': 5}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Please add keyboard shortcuts. Power users need them to work fast.
+    2. [synthetic] (dist: 0.244) An integration with Slack would make this 10x more useful for my team. Please prioritize it.
+    3. [synthetic] (dist: 0.283) Can you add multi-language support? Specifically Hindi and Spanish would help a lot in our market.
+--------------------------------------------------------------------------------
+[2026-05-25 01:43:42] ID 22 | TEXT: The web app is broken on Firefox v123. Buttons do not render. Had to switch to Chrome.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'bug', 'urgency': 'high', 'recommended_team': 'engineering', 'reasoning': 'The user reports a specific technical failure where buttons do not render on Firefox v123, indicating a browser-specific bug that prevents app usage.'}
+  ROUTING: {'destination': 'engineering', 'queue': 'P1', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) The web app is broken on Firefox v123. Buttons do not render. Had to switch to Chrome.
+    2. [synthetic] (dist: 0.256) The export to CSV button does not work in Safari. Have to use Chrome every time. Annoying.
+    3. [synthetic] (dist: 0.314) I love that I hate this app. Cannot stop using it but it frustrates me daily.
+--------------------------------------------------------------------------------
+[2026-05-25 01:44:20] ID 23 | TEXT: Just discovered the API. Built a custom integration in an afternoon. Really well-designed endpoints.
+  CLASSIFICATION: {'sentiment': 'positive', 'category': 'praise', 'urgency': 'low', 'recommended_team': 'engineering', 'reasoning': "The customer is expressing high satisfaction with the API's design and the ease of building a custom integration."}
+  ROUTING: {'destination': 'marketing', 'queue': 'wins_board', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Just discovered the API. Built a custom integration in an afternoon. Really well-designed endpoints.
+    2. [synthetic] (dist: 0.240) Brilliant product. Switching from Notion was the best decision for our team. Keep shipping.
+    3. [synthetic] (dist: 0.247) Love the new UI redesign, clean and modern. Team productivity has gone up noticeably.
+--------------------------------------------------------------------------------
+[2026-05-25 01:45:01] ID 24 | TEXT: Refund process took 3 weeks. That is way too long for a SaaS company in 2026.
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'billing', 'urgency': 'high', 'recommended_team': 'billing', 'reasoning': 'The customer is expressing frustration over the excessive time taken to process a refund, which is a financial and billing operation issue.'}
+  ROUTING: {'destination': 'billing', 'queue': 'refunds', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Refund process took 3 weeks. That is way too long for a SaaS company in 2026.
+    2. [synthetic] (dist: 0.254) Onboarding flow is confusing. Took me 30 minutes to figure out how to create my first project.
+    3. [synthetic] (dist: 0.264) Why is the loading so slow? Spent 30 seconds waiting for a simple page to render.
+--------------------------------------------------------------------------------
+[2026-05-25 01:45:43] ID 25 | TEXT: Your competitor offers the same features at half the price. Why should I stay with you?
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'billing', 'urgency': 'high', 'recommended_team': 'billing', 'reasoning': 'The customer is expressing dissatisfaction with the pricing relative to a competitor, indicating a high risk of churn.'}
+  ROUTING: {'destination': 'billing', 'queue': 'refunds', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Your competitor offers the same features at half the price. Why should I stay with you?
+    2. [synthetic] (dist: 0.314) The new pricing is way too expensive. Lost two team members because of it. Reconsidering our subscription.
+    3. [synthetic] (dist: 0.349) Server downtime yesterday for 4 hours during business hours. We lost client meetings because of it.
+--------------------------------------------------------------------------------
+[2026-05-25 01:46:26] ID 26 | TEXT: Email notifications come 2 hours late. What is the point if I miss the meeting they reference?
+  CLASSIFICATION: {'sentiment': 'negative', 'category': 'bug', 'urgency': 'high', 'recommended_team': 'engineering', 'reasoning': 'The user is reporting a functional failure where notifications are delayed by two hours, causing them to miss meetings.'}
+  ROUTING: {'destination': 'engineering', 'queue': 'P1', 'priority_score': 7}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Email notifications come 2 hours late. What is the point if I miss the meeting they reference?
+    2. [synthetic] (dist: 0.306) Server downtime yesterday for 4 hours during business hours. We lost client meetings because of it.
+    3. [synthetic] (dist: 0.324) Why is the loading so slow? Spent 30 seconds waiting for a simple page to render.
+--------------------------------------------------------------------------------
+[2026-05-25 01:47:05] ID 27 | TEXT: Win, switched our entire 50-person team to your platform last month. Zero issues so far.
+  CLASSIFICATION: {'sentiment': 'positive', 'category': 'praise', 'urgency': 'low', 'recommended_team': 'marketing', 'reasoning': 'The customer is reporting a successful migration of a large team with no issues, which serves as a strong positive testimonial.'}
+  ROUTING: {'destination': 'marketing', 'queue': 'wins_board', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Win, switched our entire 50-person team to your platform last month. Zero issues so far.
+    2. [synthetic] (dist: 0.247) Love the new UI redesign, clean and modern. Team productivity has gone up noticeably.
+    3. [synthetic] (dist: 0.253) Brilliant product. Switching from Notion was the best decision for our team. Keep shipping.
+--------------------------------------------------------------------------------
+[2026-05-25 01:47:46] ID 28 | TEXT: Hi I think your product is good but also bad sometimes I am not sure how to say it.
+  CLASSIFICATION: {'sentiment': 'mixed', 'category': 'other', 'urgency': 'low', 'recommended_team': 'product', 'reasoning': 'The customer expresses both positive and negative views without providing specific details, indicating a mixed sentiment and low urgency.'}
+  ROUTING: {'destination': 'product', 'queue': 'backlog', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: -0.000) Hi I think your product is good but also bad sometimes I am not sure how to say it.
+    2. [amazon] (dist: 0.303) not what I was expecting in terms of the company's reputation for excellent home delivery products
+    3. [amazon] (dist: 0.313) I am a energy junkie and I'm not sure if this works or not, but what I do know is that the taste is not the greatest. I do drink the steaz energy drink and I think I get the same results. I like this products because it is  more natural then the others.
+--------------------------------------------------------------------------------
+[2026-05-25 01:48:28] ID 29 | TEXT: I love that I hate this app. Cannot stop using it but it frustrates me daily.
+  CLASSIFICATION: {'sentiment': 'mixed', 'category': 'complaint', 'urgency': 'low', 'recommended_team': 'product', 'reasoning': 'The user expresses contradictory emotions of love and hate, indicating a mixed sentiment and general frustration with the overall user experience.'}
+  ROUTING: {'destination': 'support', 'queue': 'normal', 'priority_score': 3}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) I love that I hate this app. Cannot stop using it but it frustrates me daily.
+    2. [synthetic] (dist: 0.289) The mobile app keeps logging me out randomly. Have to re-enter password 5 times a day.
+    3. [synthetic] (dist: 0.306) The export to CSV button does not work in Safari. Have to use Chrome every time. Annoying.
+--------------------------------------------------------------------------------
+[2026-05-25 01:49:06] ID 30 | TEXT: Buy crypto now! Hot stock tips. Click here for guaranteed returns at scammy-site-example dot com
+  CLASSIFICATION: {'sentiment': 'neutral', 'category': 'spam', 'urgency': 'low', 'recommended_team': 'trash', 'reasoning': 'The feedback is a promotional scam message regarding cryptocurrency and contains no legitimate product feedback.'}
+  ROUTING: {'destination': 'trash', 'queue': 'trash', 'priority_score': 0}
+  RETRIEVED:
+    1. [synthetic] (dist: 0.000) Buy crypto now! Hot stock tips. Click here for guaranteed returns at scammy-site-example dot com
+    2. [synthetic] (dist: 0.413) The search function returns irrelevant results. Searching for invoice shows me random PDFs.
+    3. [synthetic] (dist: 0.415) Win, switched our entire 50-person team to your platform last month. Zero issues so far.
+--------------------------------------------------------------------------------
