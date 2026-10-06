@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: feedback-rag-mcp
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-mcp.txt
+    startCommand: uvicorn mcp_server.http_server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GOOGLE_API_KEY
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.9

@@ -1,48 +1,76 @@
-# Feedback RAG & Triage Agent
+# Feedback RAG & Public MCP-Enabled Agentic System
 
-A retrieval-augmented Q&A system and an autonomous triage agent for customer feedback. Runs entirely on the Google Gemini free tier with rate-limit handling, JSON schema validation, and local persistent storage.
+A retrieval-augmented Q&A system and autonomous triage agent for customer feedback, upgraded with a standardized **Model Context Protocol (MCP)** server. The platform operates entirely on the Google Gemini Free Tier with in-memory rate-limit resilience, JSON schema validation, and dual-mode accessibility (Streamlit Web UI + Public Streamable HTTP MCP Server).
 
-Live demo: [https://eternity-feedback.streamlit.app](https://eternity-feedback.streamlit.app)
+- **Live Streamlit App**: [https://eternity-feedback.streamlit.app](https://eternity-feedback.streamlit.app)
+- **Public MCP Server (Streamable HTTP)**: `https://feedback-rag-mcp.onrender.com/mcp`
+- **MCP Health Check**: `https://feedback-rag-mcp.onrender.com/healthz`
 
 ---
 
 ## What It Does
 
-This repo combines two related pipelines:
+This repository provides three interconnected feedback intelligence flows in one unified codebase:
 
-*   **RAG Q&A Pipeline**: Accepts natural-language questions about product experiences and generates multi-point, cited answers sourced exclusively from a vector database of 850 Amazon Fine Food Reviews.
-*   **Triage Agent**: Automatically processes incoming, unstructured customer feedback. The agent retrieves contextually similar past reviews, classifies the item using structured few-shot grounding, applies deterministic routing rules, and outputs routed tickets to target team queues with audit logging.
+1. **RAG Q&A Pipeline**: Accepts natural-language questions about product experiences and generates multi-point, cited answers sourced exclusively from a vector database of 850 Amazon Fine Food Reviews.
+2. **Autonomous Triage Agent**: Automatically processes incoming, unstructured customer feedback. The agent retrieves contextually similar past reviews, classifies the item using structured few-shot grounding, applies deterministic routing rules, and outputs routed tickets to target team queues with audit logging.
+3. **Model Context Protocol (MCP) Server**: Exposes vector search, RAG Q&A, and autonomous triage as standardized MCP tools, resources, and prompts over both local `stdio` and public `Streamable HTTP` transports for seamless integration with Claude Desktop, Cursor IDE, Windsurf, and external autonomous AI agents.
 
 ---
 
 ## System Architecture
 
-The following diagram illustrates how customer feedback traverses the semantic retrieval, LLM classification, and deterministic routing layers:
+The following diagram illustrates the protocol-driven architecture:
 
 ```mermaid
 graph TD
-    A["Customer Feedback (Unstructured Text)"] --> B["Generate Query Embedding<br>(gemini-embedding-001)"]
-    B --> C["Query ChromaDB Local Vector Store<br>(reviews collection)"]
-    C --> D["Retrieve Top-3 Similar Past Reviews<br>(Few-shot groundings)"]
-    D --> E["Construct Triage Prompt<br>(Feedback + Retrieved Context)"]
-    E --> F["Call LLM Classify Engine<br>(gemma-3-27b-it)"]
-    F --> G["Parse & Validate JSON Schema<br>(Retry/Fallback wrapper)"]
-    G --> H["Deterministic Business Rules Routing Engine"]
-    H --> I["Output & Action<br>(Sentiment, Category, Urgency, Routed Destination, Queue, Priority, Audit Log)"]
+    subgraph Client Layer
+        A1["Streamlit Web UI<br>(Community Cloud)"]
+        A2["Claude Desktop / Cursor IDE<br>(Local stdio)"]
+        A3["External AI Agents / Remote Clients<br>(Streamable HTTP / HTTPS)"]
+    end
+
+    subgraph MCP Protocol Layer [mcp_server]
+        B["Public / Local MCP Server<br>(Official Python SDK v2)"]
+        B1["In-Memory Rate Limiter<br>& LRU Cache"]
+        B2["/healthz Endpoint<br>& /mcp Route"]
+        B --> B1
+        B --> B2
+    end
+
+    subgraph Protected Core Engine
+        C1["RAG Pipeline<br>(src/rag.py)"]
+        C2["ChromaDB Vector Store<br>(850 reviews, 3072-dim)"]
+        C3["Triage Agent<br>(agent/classify.py & route.py)"]
+        C4["LLM Classify Engine<br>(gemma-3-27b-it)"]
+    end
+
+    A1 --> C1
+    A1 --> C3
+    A2 -->|stdio JSON-RPC| B
+    A3 -->|Streamable HTTP POST| B
+    B --> C1
+    B --> C2
+    B --> C3
+    C1 --> C2
+    C1 --> C4
+    C3 --> C2
+    C3 --> C4
 ```
 
 ---
 
 ## Why This Design?
 
-Every architectural decision was chosen to prioritize reliability, auditability, and zero-cost replication:
+Every architectural decision was chosen to prioritize reliability, auditability, open interoperability, and zero-cost replication:
 
-*   **Zero-Cost Free Tier Stack**: The free tier is genuinely free and forces honest rate-limit handling (sleeps, exponential backoff) rather than assuming infinite throughput.
-*   **Local ChromaDB Vector DB**: Using a local SQLite-backed ChromaDB instance ensures reproducible retrieval environments without subscription costs or external network dependencies.
-*   **Structured Classification via Gemma**: I used `gemma-3-27b-it` for classification because it reliably follows strict JSON output schemas under few-shot prompting.
-*   **Retrieval-Augmented Classification**: Instead of asking the model to classify in a vacuum, retrieving similar past items and providing them as context grounds the classification. This few-shot grounding improves classification consistency.
-*   **Deterministic Business Rules**: While LLMs excel at understanding natural language (classification), they are poor at consistently applying strict boolean rules. I separated these tasks: the LLM classifies the feedback parameters, and a pure Python routing engine deterministically maps those parameters to teams, queues, and priority scores.
-*   **JSON Schema Validation with Fallback**: Unstructured outputs fail. The triage engine uses a multi-layered parser: it strips markdown backticks, parses the raw JSON, retries exactly once with a stricter formatting directive on failure, and falls back to a safe default configuration to guarantee the pipeline never crashes.
+* **Zero-Cost Free Tier Stack**: The free tier is genuinely free and forces honest rate-limit handling (sleeps, exponential backoff) rather than assuming infinite throughput.
+* **Protocol-Driven Interoperability (MCP v2)**: Exposing system capabilities over the open Model Context Protocol decouples our core domain logic from specific frontends, allowing any modern LLM or IDE to discover and invoke our tools programmatically.
+* **Local ChromaDB Vector DB**: Using a local SQLite-backed ChromaDB instance ensures reproducible retrieval environments without subscription costs or external network dependencies.
+* **Structured Classification via Gemma**: I used `gemma-3-27b-it` for classification because it reliably follows strict JSON output schemas under few-shot prompting.
+* **Retrieval-Augmented Classification**: Instead of asking the model to classify in a vacuum, retrieving similar past items and providing them as context grounds the classification. This few-shot grounding improves classification consistency.
+* **Deterministic Business Rules**: While LLMs excel at understanding natural language (classification), they are poor at consistently applying strict boolean rules. I separated these tasks: the LLM classifies the feedback parameters, and a pure Python routing engine deterministically maps those parameters to teams, queues, and priority scores.
+* **In-Memory Rate Limiting & LRU Caching**: An in-memory sliding-window limiter (15 req/min/IP) and LRU cache at the MCP adapter layer protect the Gemini free tier from abuse without modifying the underlying core modules.
 
 ---
 
@@ -50,12 +78,14 @@ Every architectural decision was chosen to prioritize reliability, auditability,
 
 | Layer | Technology | Version / Specifics |
 | --- | --- | --- |
+| **Protocol / MCP** | Model Context Protocol | `mcp>=2.0.0` (Official Python SDK v2, `MCPServer`, Streamable HTTP) |
 | **Generation (LLM)** | Google Gemma | `gemma-3-27b-it` (via Google GenAI SDK) |
 | **Embeddings** | Google Gemini | `gemini-embedding-001` (3072 dimensions) |
 | **Vector Database** | ChromaDB | Local Persistent SQLite Client (Cosine space) |
-| **Application Layer**| Streamlit | Multi-tab interactive UI |
+| **Web UI** | Streamlit | Multi-tab interactive UI (RAG Q&A, Triage, MCP Inspector) |
+| **HTTP Server** | Starlette / Uvicorn | ASGI Streamable HTTP server with dynamic host security |
 | **Data Science** | pandas / tqdm | Batch preprocessing, analytical filtering, and progress tracking |
-| **Development** | Python 3.12 | Standard runtime environment |
+| **Development** | Python 3.11+ / 3.12 | Standard runtime environment |
 
 ---
 
@@ -81,6 +111,13 @@ feedback-rag/
 │   ├── eval_set.json          # Curated test questions & expected responses
 │   ├── results.json           # Evaluation metrics & generated responses
 │   └── run_eval.py            # Automated eval runner with backoff limits
+├── mcp_server/                 # Model Context Protocol (MCP) Server Module
+│   ├── __init__.py            # MCP package initialization
+│   ├── schemas.py             # Pydantic structured response schemas
+│   ├── rate_limiter.py        # In-memory sliding-window rate limiter & LRU cache
+│   ├── server.py              # Core MCP server definition (Tools, Resources, Prompts)
+│   ├── http_server.py         # Streamable HTTP ASGI application for cloud deployment
+│   └── client_test.py         # Automated protocol handshake & tool test suite
 ├── src/                        # Core RAG Application Code
 │   ├── __init__.py            # Source directory initialization
 │   ├── generate.py            # Answer generator interface using Gemma
@@ -90,61 +127,121 @@ feedback-rag/
 ├── .env                       # Local secrets configuration (ignored in git)
 ├── .env.example               # Example configurations template
 ├── .gitignore                 # Excludes caches, venvs, and local DBs
-├── app.py                     # Multi-tab Streamlit dashboard interface
-└── requirements.txt           # Python package dependencies
+├── app.py                     # 3-Tab Streamlit dashboard interface
+├── render.yaml                # Zero-cost Render Free Web Service deployment spec
+├── requirements.txt           # Main dependencies
+└── requirements-mcp.txt       # MCP deployment dependencies
+```
+
+---
+
+## Model Context Protocol (MCP) Deep Dive
+
+The MCP integration exposes four callable tools, two inspection resources, and one prompt template.
+
+### 1. Registered MCP Tools
+
+| Tool Name | Parameters | Description | Return Format |
+| :--- | :--- | :--- | :--- |
+| **`query_reviews_rag`** | `question: str`, `top_k: int = 5` | Performs natural-language RAG answering with citations from 850 Amazon reviews. | `{"success": true, "question": "...", "answer": "...", "sources": [...]}` |
+| **`semantic_search_reviews`** | `query: str`, `k: int = 3` | Performs raw cosine vector search against ChromaDB without calling the LLM generator. | `{"success": true, "query": "...", "results": [{"text": "...", "distance": 0.12}]}` |
+| **`triage_customer_feedback`** | `feedback_text: str` | Executes full triage: retrieval $\rightarrow$ Gemma classification $\rightarrow$ deterministic routing. | `{"success": true, "sentiment": "...", "category": "...", "destination": "...", "priority_score": 10}` |
+| **`get_triage_batch_metrics`** | *none (read-only)* | Returns analytical breakdown of category, urgency, queue, and average priority score from past runs. | `{"success": true, "total_feedback": 30, "category_distribution": {...}}` |
+
+### 2. Registered MCP Resources
+
+* **`reviews://dataset-summary`**: Returns JSON metadata for the ChromaDB collection (850 reviews, 3072 dimensions, cosine space, field definitions).
+* **`triage://queues`**: Returns JSON definitions of all team queues (`engineering: [P0, P1, P2]`, `billing: [refunds]`, `product: [backlog]`, `marketing: [wins_board]`, `support: [priority, normal]`, `trash: [trash]`).
+
+### 3. Registered MCP Prompt
+
+* **`feedback_triage_prompt`**: Standardized prompt template for external clients to invoke few-shot feedback classification.
+
+---
+
+## Client Integration Guide
+
+### A. Claude Desktop (Local stdio)
+Add the server configuration to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "feedback-rag": {
+      "command": "python",
+      "args": ["-m", "mcp_server.server"],
+      "cwd": "C:/path/to/feedback-rag"
+    }
+  }
+}
+```
+
+### B. Cursor IDE / Remote MCP Clients (Streamable HTTP)
+Add the public endpoint to your Cursor `.cursor/mcp.json` or remote MCP client:
+
+```json
+{
+  "mcpServers": {
+    "feedback-rag": {
+      "url": "https://feedback-rag-mcp.onrender.com/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
 ```
 
 ---
 
 ## Setup & Run
 
-### 1. Clone the Repository
+### 1. Clone & Setup Environment
 ```bash
 git clone https://github.com/Eternity2401/feedback-rag.git
 cd feedback-rag
-```
 
-### 2. Configure Virtual Environment
-Create and activate the Python virtual environment:
-
-**Windows**:
-```bash
 python -m venv .venv
+# Windows:
 .venv\Scripts\activate
-```
-
-**Linux/macOS**:
-```bash
-python3 -m venv .venv
+# Linux/macOS:
 source .venv/bin/activate
-```
 
-### 3. Install Dependencies
-```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configure Secrets
-Copy the environment variables template and configure your Google API Key:
+### 2. Configure Secrets
+Copy the environment variables template and add your Google API Key:
 ```bash
 cp .env.example .env
 ```
-Open `.env` and assign your key:
+Edit `.env`:
 ```env
 GOOGLE_API_KEY=your_actual_gemini_api_key_here
 ```
 
-### 5. Launch the Streamlit App
+### 3. Verify MCP Protocol Handshake
+Run the automated MCP client test suite over stdio:
+```bash
+python -m mcp_server.client_test
+```
+*Expected: Connects, discovers 4 tools, 2 resources, 1 prompt, and executes tool calls successfully.*
+
+### 4. Launch Streamlit Web UI
 Run the multi-tab interactive dashboard:
 ```bash
 streamlit run app.py
 ```
+- **Tab 1**: 🛒 Ask Reviews (Grounded Q&A)
+- **Tab 2**: 🤖 Triage Agent (Interactive feedback classification)
+- **Tab 3**: 🔌 MCP Server & Protocol (Live tool tester & client configs)
 
-### 6. Run the Batch Triage Pipeline (Optional)
-Run the batch triage orchestrator to process all 30 customer feedbacks and write logs:
+### 5. Run Public MCP Server Locally
 ```bash
-python -m agent.run
+python -m mcp_server.http_server
+# or
+uvicorn mcp_server.http_server:app --host 0.0.0.0 --port 8000
 ```
+Health check: `http://localhost:8000/healthz`  
+MCP endpoint: `http://localhost:8000/mcp`
 
 ---
 
@@ -153,7 +250,6 @@ python -m agent.run
 The Q&A pipeline performs a semantic vector search of product reviews using cosine similarity to answer user questions with cited, factual summaries.
 
 ### Curated Sample Queries
-Below are actual outputs showcasing the system's ability to synthesize raw reviews:
 
 #### Question: *Are the chips usually crushed upon arrival?*
 > Experiences vary among reviewers:
@@ -166,32 +262,28 @@ Below are actual outputs showcasing the system's ability to synthesize raw revie
 
 ### Automated Evaluation Suite
 The RAG pipeline is actively tested via `evals/run_eval.py` on a set of 20 challenging questions:
-*   **Accuracy (Average Score)**: 39%
-*   **Average Score by Category**:
-    *   *Comparison*: 47%
-    *   *Complaint*: 49%
-    *   *Sentiment*: 36%
-    *   *Information*: 29%
-*   **Rate-limit Failures**: 0/20 (bypassed entirely using the exponential retry logic)
-*   **Punts ("I don't know" answers)**: 3 (representing robust containment where the 850 reviews lack the answer)
+* **Accuracy (Average Score)**: 39%
+* **Average Score by Category**:
+  * *Comparison*: 47%
+  * *Complaint*: 49%
+  * *Sentiment*: 36%
+  * *Information*: 29%
+* **Rate-limit Failures**: 0/20 (bypassed entirely using exponential retry logic)
+* **Punts ("I don't know" answers)**: 3 (representing robust containment where the 850 reviews lack the answer)
 
 ---
 
 ## Triage Agent Module — Deep Dive
 
-The triage module ingests raw customer support tickets, extracts structured attributes, and routes them to appropriate teams.
-
 ### 1. Classification Schema
 Gemma generates a structured JSON object containing:
-*   `sentiment`: `"positive" | "negative" | "neutral" | "mixed"`
-*   `category`: `"bug" | "feature_request" | "praise" | "complaint" | "billing" | "spam" | "other"`
-*   `urgency`: `"critical" | "high" | "medium" | "low"`
-*   `recommended_team`: `"engineering" | "product" | "support" | "billing" | "marketing" | "trash"`
-*   `reasoning`: A 1-2 sentence justification.
+* `sentiment`: `"positive" | "negative" | "neutral" | "mixed"`
+* `category`: `"bug" | "feature_request" | "praise" | "complaint" | "billing" | "spam" | "other"`
+* `urgency`: `"critical" | "high" | "medium" | "low"`
+* `recommended_team`: `"engineering" | "product" | "support" | "billing" | "marketing" | "trash"`
+* `reasoning`: A 1-2 sentence justification.
 
 ### 2. Business Routing Rules
-
-The routing engine executes the following logic mapping:
 
 | Category | Urgency | Target Team (Destination) | Assigned Queue | Priority Score |
 | --- | --- | --- | --- | --- |
@@ -207,58 +299,20 @@ The routing engine executes the following logic mapping:
 
 ### 3. Sample Execution Output
 
-The table below shows sample data generated in `agent/outputs/triaged_results.csv` from a run:
-
 | ID | Text | Category | Urgency | Destination | Queue | Priority | Reasoning |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **1** | App crashes every time I open it on Android 14. Lost all my data... | bug | critical | engineering | P0 | 10 | The user reports app crashes on Android 14 resulting in data loss, which is highly critical. |
 | **2** | Would love a dark mode option for the dashboard, especially... | feature_request | low | product | backlog | 3 | The customer requests a dark mode feature, which represents a non-urgent product enhancement. |
 | **3** | Just got my order in 2 days. Packaging was perfect and product... | praise | low | marketing | wins_board | 3 | Customer is highly satisfied with fast shipping and packaging quality, representing excellent feedback. |
 
-### 4. Rate-Limit & Free-Tier Compliance
-To safely process batch requests under the strict free tier, I built the following guardrails:
-*   **Embeddings Spacing**: `time.sleep(13)` before each embedding query to stay below the 5 RPM ceiling.
-*   **Generation Spacing**: `time.sleep(4)` before each LLM call to stay below the 15 RPM ceiling.
-*   **Resume Safety**: The batch orchestrator records completed entries to `agent/outputs/triaged_results.csv` progressively. If interrupted, restarting the script automatically reads existing entries and processes only the remainder.
-
 ---
 
-## Execution Performance & Metrics
+## Public Deployment & Free-Tier Limitations
 
-I executed a complete batch triage run over the 30 synthetic feedbacks:
-*   **Total Feedbacks Processed**: 30
-*   **Successful Runs**: 30
-*   **Failed Runs**: 0 (100% completion rate)
-*   **Category Distribution**:
-    *   `bug`: 7
-    *   `feature_request`: 6
-    *   `praise`: 6
-    *   `billing`: 5
-    *   `complaint`: 4
-    *   `other`: 1
-    *   `spam`: 1
-*   **Destination Distribution**:
-    *   `engineering`: 7
-    *   `product`: 7
-    *   `marketing`: 6
-    *   `billing`: 5
-    *   `support`: 4
-    *   `trash`: 1
-*   **Total Execution Runtime**: ~19 minutes (safely paced for free-tier rate limits)
-*   **Total Cost**: $0.00
-
----
-
-## Future Improvements
-
-If I had more time, I would expand this architecture in the following directions:
-
-1.  **Human-in-the-Loop Active Learning**: Add a pipeline where agents can flag classifications that were manually corrected by support staff and append them back into ChromaDB to act as improved few-shot context examples.
-2.  **Multi-Language Translation Pre-step**: Ingest feedback in any language (e.g. Hindi, Spanish, Mandarin) and route it through a lightweight translator before semantic search and classification.
-3.  **Real-Time Integrations**: Create Slack/Teams webhooks to post critically-rated bugs directly to developer alerts channels or stream wins to marketing boards.
-4.  **Confidence-Based Throttling**: Generate a confidence score during classification. If the score is low (e.g., < 0.7), flag the item for manual review before applying routing.
-5.  **Multi-Query Retrieval Expansion**: Use query expansion to generate synonyms or sub-queries for incoming customer feedback to surface context reviews more accurately.
-6.  **Migrate to Managed Vector DB**: As volume increases past 100k records, swap the local ChromaDB client for a managed vector service (such as Pinecone or Weaviate) to support concurrent scale.
+* **Streamlit Community Cloud**: Automatically builds and hosts the user-facing web dashboard directly from the main branch.
+* **Render Free Web Service**: Hosts the stateless Streamable HTTP MCP server at zero cost via `render.yaml`.
+* **Cold Starts**: Render free services spin down after 15 minutes of inactivity. The initial MCP request may experience a ~30-second cold-start delay while the instance boots.
+* **Security**: Google Gemini API keys remain strictly server-side and are never exposed over MCP or client responses.
 
 ---
 
