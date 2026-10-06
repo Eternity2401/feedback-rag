@@ -57,7 +57,28 @@ async def healthz(request) -> JSONResponse:
     )
 
 
-# Attach /healthz route
+# Add Root endpoint for browser visits to avoid 404
+async def root(request) -> JSONResponse:
+    host_url = f"https://{RENDER_HOSTNAME}" if RENDER_HOSTNAME else f"http://{HOST}:{PORT}"
+    return JSONResponse(
+        {
+            "status": "online",
+            "service": "feedback-rag-mcp",
+            "protocol": "Model Context Protocol (v2)",
+            "mcp_endpoint": f"{host_url}/mcp",
+            "health_check": f"{host_url}/healthz",
+            "streamlit_ui": "https://eternity-feedback.streamlit.app",
+            "github_repo": "https://github.com/Eternity2401/feedback-rag",
+            "tools_count": 4,
+            "resources_count": 2,
+            "prompts_count": 1,
+            "message": "Welcome to the Feedback RAG & Triage Agent MCP Server. Connect via Streamable HTTP at /mcp."
+        }
+    )
+
+
+# Attach routes
+app.routes.append(Route("/", root, methods=["GET"]))
 app.routes.append(Route("/healthz", healthz, methods=["GET"]))
 
 
